@@ -15,6 +15,7 @@ const howSum = (targetSum, numbers) => {
   for (let num of numbers) {
     const remainder = targetSum - num;
     const result = howSum(remainder, numbers);
+    console.log(result);
     if (result !== null) {
       // copying operation also adds to time complexity
       // worst case, copying will take O(m) steps
@@ -46,6 +47,7 @@ const Sum = (targetSum, numbers, memo = {}) => {
   for (let num of numbers) {
     const remainder = targetSum - num;
     const result = Sum(remainder, numbers, memo);
+    console.log(`Result`, result);
     if (result !== null) {
       memo[targetSum] = [...result, num];
       return memo[targetSum];

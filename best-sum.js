@@ -19,6 +19,7 @@ const bestSum = (targetSum, numbers) => {
       const bestRoute = [...result, num];
       // console.log(`-----`, bestRoute);
       // check to see shortest combination
+      // keeping track of shortest route and replacing it with the best route
       if (shortesRoute === null || bestRoute.length < shortesRoute.length) {
         console.log(shortesRoute);
         shortesRoute = bestRoute;
@@ -29,7 +30,54 @@ const bestSum = (targetSum, numbers) => {
   return shortesRoute;
 };
 
-console.log(bestSum(7, [5, 3, 4, 7]));
-console.log(bestSum(8, [2, 3, 5]));
-console.log(bestSum(8, [1, 4, 5]));
+// console.log(bestSum(7, [5, 3, 4, 7]));
+// console.log(bestSum(8, [2, 3, 5]));
+// console.log(bestSum(8, [1, 4, 5]));
 // console.log(bestSum(100, [1, 2, 5, 25]));
+
+// # TIME COMPLEXITY FOR BRUTE FORCE
+// m : target sum
+// n : length of array
+// O(n^m * m)
+
+// # SPACE COMPLEXITY
+// O(m^2)
+
+// # MEMOIZATION
+
+const Sum = (targetSum, numbers, memo = {}) => {
+  if (targetSum in memo) return memo[targetSum];
+  if (targetSum < 0) return null;
+  if (targetSum === 0) return [];
+
+  let shortestRoute = null;
+
+  for (let num of numbers) {
+    const remainder = targetSum - num;
+    const result = Sum(remainder, numbers, memo);
+
+    if (result !== null) {
+      const bestRoute = [...result, num];
+
+      if (shortestRoute === null || bestRoute.length < shortestRoute.length) {
+        shortestRoute = bestRoute;
+        memo[targetSum] = shortestRoute;
+      }
+    }
+  }
+
+  return shortestRoute;
+};
+
+console.log(Sum(7, [5, 3, 4, 7]));
+console.log(Sum(8, [2, 3, 5]));
+console.log(Sum(8, [1, 4, 5]));
+console.log(Sum(100, [1, 2, 5, 25]));
+
+// # TIME COMLPEXITY FOR MEMOIZED
+
+// O(m^2 * n)
+
+// # SPACE COMPLEXITY
+
+// O(m^2)

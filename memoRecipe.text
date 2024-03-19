@@ -1,0 +1,27 @@
+<!-- Memoization Recipe 
+
+1. Make it work. Through recursive programming, it will be slow at first. 
+
+- Visualize problem as a tree
+
+- Implement tree using recursion (Think of leaves as base case)
+
+- Test brute force recursion 
+
+2. Make it efficient Through using memoization {} 
+
+- Add memo object memo={} 
+
+- Add new base case for memo values 
+
+- if (n in memo) return memo[n] 
+
+- Store return values in memo (n ,memo) + (m, memo)
+
+canSum -> "Can it be done? Yes or no?" -> Decision problem
+
+howSum -> "How will you do it?" -> Combinatoric Problem 
+
+bestSum -> "What is the best way to do it?" -> Optimizaion Problem  
+
+-->

@@ -1,0 +1,19 @@
+<!-- 
+
+Tabulation Recipe
+
+1. Visualize problem as a table
+
+2. Size table based on the inputs
+
+3. Initialize tables with default values
+    - If number init with numbers 
+    - If boolead init with true/false
+    - If string init with some strings
+
+4. Seed trivial answer into table
+
+5. Iterate through table
+    - Fill further positions of the table with the current position of the table
+
+-->

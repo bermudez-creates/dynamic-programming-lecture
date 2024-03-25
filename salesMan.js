@@ -48,8 +48,35 @@ const salesTraveler = (m, n, memo = {}) => {
 // m:{0,1,2,3,4,5,6}
 // n:{0,1,2,3,4,5}  --- since were storing the data we rid of binary search only to multiply both top-level possibilities
 
-console.log(salesTraveler(1, 1));
-console.log(salesTraveler(2, 3));
-console.log(salesTraveler(3, 2));
-console.log(salesTraveler(3, 3));
-console.log(salesTraveler(18, 18));
+// console.log(salesTraveler(1, 1));
+// console.log(salesTraveler(2, 3));
+// console.log(salesTraveler(3, 2));
+// console.log(salesTraveler(3, 3));
+// console.log(salesTraveler(18, 18));
+
+const gridTraveler = (m, n) => {
+  const table = Array(m + 1)
+    .fill()
+    .map(() => Array(n + 1).fill(0));
+  // .map gives us a new inner Array
+  table[1][1] = 1;
+  for (let i = 0; i <= m; i++) {
+    for (let j = 0; j <= n; j++) {
+      const current = table[i][j];
+      // going right
+      if (j + 1 <= n) table[i][j + 1] += current;
+      // going down
+      if (i + 1 <= m) table[i + 1][j] += current;
+    }
+  }
+  // console.log(table);
+
+  return table[m][n];
+  // table[(1, 1)] = 1;
+};
+
+console.log(gridTraveler(1, 1));
+console.log(gridTraveler(3, 3));
+console.log(gridTraveler(3, 2));
+
+console.log(gridTraveler(18, 18));

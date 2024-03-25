@@ -27,8 +27,8 @@ const Construct = (target, wordBank) => {
 // # TIME COMPLEXITY
 // m: target.length (height)
 // n: array.length (nodes)
-// O(n^m * m^2)
-// O(m^2 * m)
+// O(n^m)
+// O(m)
 
 const allConstruct = (target, wordBank, memo = {}) => {
   if (target in memo) return memo[target];

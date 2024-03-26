@@ -33,36 +33,3 @@ const canSum = (targetSum, numbers) => {
 // if arr has 3 numbers than there are 3 possibilities *n
 // Time complexity O(n^m) Space complexity: O(m)
 // its n^m powered because were taking the n in the array because there can be values UP TO m (m differ possible valuues in  the node)
-
-// # MEMOIZED
-// 1. init memo{}
-// 2. Look for targetSum in memo{}
-// 3. Look at return values that are not base cases and store them in memo{}
-
-const Sum = (targetSum, numbers, memo = {}) => {
-  // memo fetch logic
-  if (targetSum in memo) return memo[targetSum];
-  if (targetSum === 0) return true;
-  if (targetSum < 0) return false;
-
-  for (let n of numbers) {
-    const remainder = targetSum - n;
-    if (Sum(remainder, numbers, memo) === true) {
-      memo[targetSum] = true;
-      return true;
-    }
-  }
-
-  memo[targetSum] = false;
-  return false;
-};
-
-console.log(Sum(7, [2, 3]));
-console.log(Sum(7, [5, 3, 4, 7]));
-console.log(Sum(7, [2, 4]));
-console.log(Sum(8, [2, 3, 5]));
-console.log(Sum(300, [7, 14]));
-
-// Time complexity -> O(m*n)
-// since were storing the values in the memo object - theres no need to branch off in the sub trees
-// we still need to branch off n [2,3] times for each node

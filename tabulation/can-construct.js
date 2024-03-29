@@ -19,8 +19,10 @@ const canConstruct = (target, wordBank) => {
   const table = Array(target.length + 1).fill(false);
   table[0] = true;
 
+  // m iterations
   for (let i = 0; i <= target.length; i++) {
     if (table[i] === true) {
+      // n iterations
       for (let word of wordBank) {
         // if word matches character starting at position i
         if (target.slice(i, i + word.length) === word) {

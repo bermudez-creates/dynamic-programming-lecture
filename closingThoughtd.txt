@@ -1,0 +1,16 @@
+<!--
+      Dynamic Programming
+
+      1. Notice overlapping problems
+
+      2. Decide what is the trivially smallest input
+
+      3.  Think Recursively and use Memoization 
+          Think Iteratively and use Tabulation
+
+      4. Draw a strategy first    
+
+
+
+
+ -->
